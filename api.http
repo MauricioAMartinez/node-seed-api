@@ -1,0 +1,16 @@
+### Recupera todos los datos
+
+GET http://localhost:3000/api/v1/users
+
+### create user
+
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+    "name": "Pedro",
+    "email": "pedro@example.com",
+    "password": "123456"
+}
+
+
