@@ -1,28 +1,18 @@
 const express = require('express')
+const fs = require('fs')
 const router = express.Router()
-const fs = require('node:fs')
-const { route } = require('./users')
 
-const pathRouter = `${__dirname}/`
-const removeExtension = (file) => {
-  return file.split('.').shift()
+const PATH_ROUTES = __dirname
+
+const removeExtension = (fileName) => {
+  return fileName.split('.').shift()
 }
 
-fs.readdirSync(pathRouter).filter((file) => {
-  const fileWithoutExtension = removeExtension(file)
-  const skip = ['index'].includes(fileWithoutExtension)
-  if (!skip) {
-    console.log('Routes')
-    router.use(`/${fileWithoutExtension}`, require(`./${fileWithoutExtension}`))
-    console.log('--->', fileWithoutExtension)
+fs.readdirSync(PATH_ROUTES).forEach(file => {
+  const name = removeExtension(file)
+  if (name !== 'index') {
+    router.use(`/${name}`, require(`./${name}`))
   }
-})
-
-router.get('*', (req, res) => {
-  res.status(404).json({
-    status: 404,
-    message: 'Not Found'
-  })
 })
 
 module.exports = router

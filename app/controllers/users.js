@@ -1,6 +1,5 @@
 const { httpError } = require('../helpers/handleError')
-const userModel = require('../models/users')
-
+const userModel = require('../models/nosql/users')
 
 const getUsers = async (req, res) => {
   try {

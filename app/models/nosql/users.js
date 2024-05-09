@@ -8,10 +8,15 @@ const userSchema = new mongoose.Schema({
     type: Number
   },
   email: {
-    type: String
+    type: String,
+    unique: true
   },
   password: {
     type: String
+  },
+  role: {
+    type: ['user', 'admin'],
+    default: 'user'
   }
 },
 {
