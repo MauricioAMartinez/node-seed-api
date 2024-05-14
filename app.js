@@ -9,8 +9,9 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api', require('./app/routes'))
+
 dbConnect()
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
+  console.log(`Server is running on port http://localhost:${PORT}`)
 })

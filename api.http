@@ -23,4 +23,8 @@ Content-Type: application/json
     "mediald": "621e7499a1f699063f5114bc"
 }
 
+##POST 
+
+POST http://localhost:3000/api/storage
+
 
